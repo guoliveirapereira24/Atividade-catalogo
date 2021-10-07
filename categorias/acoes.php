@@ -83,9 +83,26 @@ if (count($erros) > 0) {
 
           break;
     
+          case 'editar':
+
+            $id = $_POST["id"];
+            $descricao = $_POST['descricao'];
+
+            $sql = "UPDATE tbl_categoria SET descricao = '$descricao' WHERE id = $id";
+
+            //          echo $sql; exit;
+
+            $resultado = mysqli_query($conexao, $sql);
+
+            header('location: index.php');
+
+            break;
+
+
     default:
         # code...
         break;
+
 }
 
 
