@@ -28,4 +28,3 @@ create table tbl_categoria (
 alter table tbl_produto
 add column categoria_id int,
 add foreign key (categoria_id) references tbl_categoria(id);
-

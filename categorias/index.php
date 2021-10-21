@@ -8,11 +8,12 @@
 
     $resultado = mysqli_query($conexao, $sql);
 
-/*    echo '<pre>';
-    var_dump($resultado);
-    echo '<pre>';
-    exit;
-*/
+    // $categoria = mysqli_fetch_array($resultado);
+
+    // echo '<pre>';
+    // var_dump($categoria);
+    // echo '</pre>';
+    // exit;
 
 ?>
 <!DOCTYPE html>
@@ -37,32 +38,29 @@
                 <form class="form-categoria" method="POST" action="./acoes.php">
                     <input type="hidden" name="acao" value="inserir" />
                     <h1 class="span2">Adicionar Categorias</h1>
-                   
-                    <ul>
-                        
-<?php
                     
-                        if (isset($_SESSION['erros'])) {
+                    <ul>
+                    <?php
+                        if(isset($_SESSION["erros"])){
+
                             foreach ($_SESSION["erros"] as $erro) {
-                                # code...
-                                            
-?>
-                   
-                        <li><?php echo $erro ?>
-                        
-                        </li>
-                        <?php
-                            }//           FIM DO FOREACH
-                            
-                                session_unset();
-                                session_destroy();
+                                
+                    ?>
 
-                        }//                 FIM DO IF
-                        
-                        
-                        ?>
-                        </ul>
+                        <li><?php echo $erro?></li>
 
+                    <?php
+                        }//fim do foreach
+
+                        //Limpa a variável de sessão
+                        session_unset();
+                        
+                        //Destroi a sessão
+                        session_destroy();
+
+                    }//fim do if 
+                    ?>
+                    </ul>
 
                     <div class="input-group span2">
                         <label for="descricao">Descrição</label>
@@ -73,23 +71,18 @@
                 </form>
                 <h1>Lista de Categorias</h1>
 
-        <?php
-                while ($categoria = mysqli_fetch_array($resultado)) {
+                    <?php
                     
+                        while($categoria = mysqli_fetch_array($resultado)){
 
                     ?>
 
-                    
-                    
                     <div class="card-categorias">
-                        <?php echo $categoria ["descricao"]; ?>
-                        <img onclick="deletar(<?php echo $categoria['id'] ?>)" src="https://icons.veryicon.com/png/o/construction-tools/coca-design/delete-189.png" />
-                        <img onclick="javascript: window.location = 'editar.php?id=<?php echo $categoria['id'] ?>'"src="https://icons.veryicon.com/png/o/leisure/weight-with-linear-icon/edit-65.png"/>
-
-
-
+                        <?php echo $categoria["descricao"]; ?>
+                        <img onclick="deletar(<?php echo $categoria['id']; ?>)" src="https://icons.veryicon.com/png/o/construction-tools/coca-design/delete-189.png" />
+                        <img onclick="javascript: window.location = 'editar.php?id=<?php echo $categoria['id']; ?>'" src="https://icons.veryicon.com/png/o/leisure/weight-with-linear-icon/edit-65.png" />
                     </div>
-                
+
                     <?php } ?>
 
                 <form id="form-deletar" method="POST" action="./acoes.php">
@@ -106,5 +99,5 @@
         }
     </script>
 </body>
-    
+
 </html>
