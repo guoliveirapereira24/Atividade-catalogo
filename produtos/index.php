@@ -1,5 +1,7 @@
 <?php
 
+
+
     require('../database/conexao.php');
 
     $sql = "SELECT p.*, c.descricao FROM tbl_produto p
@@ -99,7 +101,7 @@
                     </span>
 
                     <span class="descricao"><?php echo $produto["descricao"]?></span>
- 
+
                     <span class="categoria">
                         <em><?php echo $produto["descricao"]; ?></em>
                      </span>
