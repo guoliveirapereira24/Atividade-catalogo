@@ -1,5 +1,10 @@
+
 <?php
+
+    session_start();
+
 $raiz = "/gustavo/senai-icatalogo-mysqli-alunos";
+
 
 ?>
 
@@ -23,7 +28,8 @@ $raiz = "/gustavo/senai-icatalogo-mysqli-alunos";
         </nav>
         <div id="container-login" class="container-login">
             <h1>Fazer Login</h1>
-            <form method="POST" action="/componentes/header/acoesLogin.php">
+
+            <form method="POST" action="<?php echo $raiz?>/componentes/header/acoesLogin.php">
                 <input type="hidden" name="acao" value="login" />
                 <input type="text" name="usuario" placeholder="Usuário" />
                 <input type="password" name="senha" placeholder="Senha" />
@@ -38,13 +44,13 @@ $raiz = "/gustavo/senai-icatalogo-mysqli-alunos";
                 <a id="menu-admin" onclick="logout()">Sair</a>
             </ul>
         </nav>
-        <form id="form-logout" style="display:none" method="POST" action="/componentes/header/acoesLogin.php">
+        <form id="form-logout" style="display:none" method="POST" action="<?php echo $raiz?>/componentes/header/acoesLogin.php">
             <input type="hidden" name="acao" value="logout" />
         </form>
     <?php
     }
     ?>
-   
+
 </header>
 
 <script lang="javascript">
@@ -74,3 +80,4 @@ $raiz = "/gustavo/senai-icatalogo-mysqli-alunos";
     }
 
 </script>
+

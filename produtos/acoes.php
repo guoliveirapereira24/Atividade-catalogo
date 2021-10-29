@@ -145,7 +145,7 @@
 
             /* INSERÇÃO DE DADOS NA BASE DE DADOS DO MYSQL: */
 
-            //RECEBIMENTO DOS DADOS:
+            //RECEBEIMENTO DOS DADOS:
             $descricao = $_POST["descricao"];
             $peso = $_POST["peso"];
             $quantidade = $_POST["quantidade"];
@@ -195,6 +195,7 @@
 
             $produtoId = $_POST["produtoId"];
 
+            /** PROCESSO DE VALIDAÇÃO **/
             $erros = validarCampos();
 
             if (count($erros) > 0) {
@@ -209,6 +210,7 @@
 
             /** ATUALIZANDO A IMAGEM DO PRODUTO **/
 
+            
 
             if($_FILES["foto"]["error"] != UPLOAD_ERR_NO_FILE){
 
@@ -239,6 +241,7 @@
                 move_uploaded_file($_FILES["foto"]["tmp_name"], "fotos/$novoNomeArquivo");
 
             }
+
 
             /** CAPTURA OS DADOS DE TEXTO E DE NUMERO **/
             $descricao = $_POST["descricao"];
